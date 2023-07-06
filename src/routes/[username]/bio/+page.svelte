@@ -2,6 +2,7 @@
     import type { PageData } from "./$types";
     import { page } from '$app/stores';
     import { enhance } from "$app/forms";
+	import { db, userData, user } from "$lib/firebase";
 
   
     export let data: PageData;
@@ -18,7 +19,7 @@
   
     <form method="POST" use:enhance>
 		<div class="form-control">
-			<label for="bio" class="label">
+			<label for="bio" class="label justify-center">
 			<span class="label-text">Your bio</span>
 			</label>
 			<textarea
@@ -28,6 +29,9 @@
 			/>
 		</div>
 		<button class="btn btn-primary my-5">Update Bio</button>
+		{#if $userData?.username}
+			<a class="btn btn-secondary" href="/{$userData.username}/edit">Go back</a>
+		{/if}
     </form>
 </main>
   
