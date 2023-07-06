@@ -94,7 +94,7 @@
 				href={`/${$userData?.username}`}
 				class="link link-accent"
 			>
-			https://linktree-clone-plum.vercel.app/{$userData?.username}
+			https://link-shelf.vercel.app/{$userData?.username}
 			</a>
 			</p>
 		</div>
