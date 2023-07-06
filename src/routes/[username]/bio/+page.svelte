@@ -9,6 +9,9 @@
   
 </script>
   
+<svelte:head>
+	<title>Edit Bio</title>
+</svelte:head>
 
 <main class="max-w-lg prose text-center mx-auto my-6">
   

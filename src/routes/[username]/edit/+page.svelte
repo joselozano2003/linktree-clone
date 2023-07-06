@@ -80,6 +80,13 @@
 		showForm = false;
     }
 </script>
+
+<svelte:head>
+    {#if $userData?.username == $page.params.username}
+		<title>Edit @{$userData?.username}'s Profile</title>
+		<meta name="description" content="Edit your profile" />
+	{/if}
+</svelte:head>
   
 <main class="max-w-xl mx-auto">
     {#if $userData?.username == $page.params.username}
