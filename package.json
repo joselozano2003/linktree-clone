@@ -1,5 +1,5 @@
 {
-	"name": "learn-1",
+	"name": "sv-app",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -11,9 +11,10 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/adapter-vercel": "^3.0.1",
 		"@sveltejs/kit": "^1.20.4",
 		"autoprefixer": "^10.4.14",
-		"daisyui": "^3.1.7",
+		"daisyui": "^3.1.6",
 		"postcss": "^8.4.24",
 		"svelte": "^4.0.0",
 		"svelte-check": "^3.4.3",

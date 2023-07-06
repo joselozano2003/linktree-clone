@@ -1,39 +1,15 @@
-# create-svelte
+# SvelteKit - The Full Course
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This repo contains the code for the [Full SvelteKit Course](https://fireship.io/courses/sveltekit) on fireship.io
 
-## Creating a project
+- [Live Demo 🥋](https://kung.foo)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Usage
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+To take advantage of this code you will need to add your own Firebase client project config and Firebase Admin SDK service account as explained in the course setup. 
 
-# create a new project in my-app
-npm create svelte@latest my-app
 ```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+git clone <this-repo>
+npm i
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-# linktree-clone

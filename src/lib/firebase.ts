@@ -5,13 +5,13 @@ import { getStorage } from "firebase/storage";
 import { writable, type Readable, derived } from "svelte/store";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBQidCBbggy_5jMdjhOcFBteB5rVB-6IiE",
-    authDomain: "linktree-clone-92fcf.firebaseapp.com",
-    projectId: "linktree-clone-92fcf",
-    storageBucket: "linktree-clone-92fcf.appspot.com",
-    messagingSenderId: "313146090103",
-    appId: "1:313146090103:web:78cfd9b7b5017620589c72",
-    measurementId: "G-PRNK8KQXN4"
+	apiKey: "AIzaSyDLvieJx5yP5NtA7josksmVRsRshUvrnBs",
+	authDomain: "link-shelf.firebaseapp.com",
+	projectId: "link-shelf",
+	storageBucket: "link-shelf.appspot.com",
+	messagingSenderId: "264982272588",
+	appId: "1:264982272588:web:f84fe0210fa2dfd84f32e9",
+	measurementId: "G-7JNB00ME0R"
 };
 
 // Initialize Firebase
@@ -25,27 +25,27 @@ export const storage = getStorage();
  * @returns a store with the current firebase user
  */
 function userStore() {
-    let unsubscribe: () => void;
+	let unsubscribe: () => void;
 
-    if (!auth || !globalThis.window) {
-        console.warn('Auth is not initialized or not in browser');
-        const { subscribe } = writable<User | null>(null);
-        return {
-        subscribe,
-        }
-    }
+	if (!auth || !globalThis.window) {
+		console.warn('Auth is not initialized or not in browser');
+		const { subscribe } = writable<User | null>(null);
+		return {
+		subscribe,
+		}
+	}
 
-    const { subscribe } = writable(auth?.currentUser ?? null, (set) => {
-        unsubscribe = onAuthStateChanged(auth, (user) => {
-        set(user);
-        });
+	const { subscribe } = writable(auth?.currentUser ?? null, (set) => {
+		unsubscribe = onAuthStateChanged(auth, (user) => {
+		set(user);
+		});
 
-    return () => unsubscribe();
-    });
+		return () => unsubscribe();
+	});
 
-    return {
-        subscribe,
-    };
+	return {
+		subscribe,
+	};
 }
 
 export const user = userStore();
@@ -58,39 +58,39 @@ export const user = userStore();
  * @returns a store with realtime updates on document data
  */
 export function docStore<T>(
-    path: string,
+  	path: string,
 ) {
-    let unsubscribe: () => void;
+	let unsubscribe: () => void;
 
-    const docRef = doc(db, path);
+	const docRef = doc(db, path);
 
-    const { subscribe } = writable<T | null>(null, (set) => {
-        unsubscribe = onSnapshot(docRef, (snapshot) => {
-        set((snapshot.data() as T) ?? null);
-        });
+	const { subscribe } = writable<T | null>(null, (set) => {
+		unsubscribe = onSnapshot(docRef, (snapshot) => {
+		set((snapshot.data() as T) ?? null);
+		});
 
-        return () => unsubscribe();
-    });
+		return () => unsubscribe();
+	});
 
-    return {
-        subscribe,
-        ref: docRef,
-        id: docRef.id,
-    };
+	return {
+		subscribe,
+		ref: docRef,
+		id: docRef.id,
+	};
 }
 
 interface UserData {
-    username: string;
-    bio: string;
-    photoURL: string;
-    published: boolean;
-    links: any[];
+	username: string;
+	bio: string;
+	photoURL: string;
+	published: boolean;
+	links: any[];
 }
 
 export const userData: Readable<UserData | null> = derived(user, ($user, set) => { 
-    if ($user) {
-        return docStore<UserData>(`users/${$user.uid}`).subscribe(set);
-    } else {
-        set(null); 
-    }
+	if ($user) {
+		return docStore<UserData>(`users/${$user.uid}`).subscribe(set);
+	} else {
+		set(null); 
+	}
 });  
