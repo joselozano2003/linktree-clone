@@ -47,7 +47,7 @@
       links: [
         {
           title: "Test Link",
-          url: "https://kung.foo",
+          url: "https://link-shelf.vercel.app",
           icon: "custom",
         },
       ],
